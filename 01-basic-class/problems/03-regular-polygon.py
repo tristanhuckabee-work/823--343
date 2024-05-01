@@ -36,7 +36,30 @@
 # Greater than 10 sides - Polygon with n sides
 
 # Write your class here.
+class RegularPolygon:
+    def __init__(self, sides, length):
+        if sides < 3:
+            raise Exception('A polygon must have at least 3 sides.')
+        self.num_sides = sides
+        self.length = length
+        self.type = 'Polygon'
 
+    def identify_polygon(self):
+        if self.num_sides > 10:
+            self.type = f'Polygon with {self.num_sides} sides'
+            return
+
+        guide = dict(enumerate(['Triangle', 'Quadrilateral', 'Pentagon', 'Hexagon', 'Heptagon', 'Octagon', 'Nonagon', 'Decagon'], start=3))
+        poly_type = guide[self.num_sides]
+        self.type = poly_type
+
+    @classmethod
+    def polygon_factory(cls, values):
+        return [cls(num_sides, length) for num_sides, length in values]
+
+    @staticmethod
+    def get_perimeter(polygon):
+        return polygon.num_sides * polygon.length
 
 pentagon = RegularPolygon(5, 5)
 octagon = RegularPolygon(8, 10)

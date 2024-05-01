@@ -18,6 +18,25 @@
 #   "<Bad Calculator - can only do {num1}*{num2} and {num1}/{num2}>"
 
 # Declare your class here
+class BadCalculator:
+    def __init__(self, num1, num2):
+        self.num1 = num1
+        self.num2 = num2
+
+    def change_nums(self, val1, val2):
+        self.num1 = val1
+        self.num2 = val2
+
+    def mult_nums(self):
+        return self.num1 * self.num2
+
+    def div_nums(self):
+        if not self.num2:
+            return 'Sorry, I cannot divide by zero'
+        return self.num1 / self.num2
+
+    def __repr__(self):
+        return f'<Bad Calculator - can only do {self.num1}*{self.num2} and {self.num1}/{self.num2}>'
 
 
 pair_1 = BadCalculator(15, 3)

@@ -18,6 +18,46 @@
 #   node in post-order succession
 
 # Write your class here.
+class Node:
+    def __init__(self, value):
+        self.left = None
+        self.right = None
+        self.value = value
+
+class Tree:
+    def insert(self, curr, new_node):
+        if not curr:
+            return new_node
+        
+        if curr.value == new_node.value:
+            return
+        
+        else:
+            if curr.value < new_node.value:
+                curr.right = self.insert(curr.right, new_node)
+            
+            else:
+                curr.left = self.insert(curr.left, new_node)
+
+            return curr
+
+    def preorder_traversal(self, node):
+        if node:
+            print(node.value)
+            self.preorder_traversal(node.left)
+            self.preorder_traversal(node.right)
+
+    def inorder_traversal(self, node):
+        if node:
+            self.inorder_traversal(node.left)
+            print(node.value)
+            self.inorder_traversal(node.right)
+
+    def postorder_traversal(self, node):
+        if node:
+            self.postorder_traversal(node.left)
+            self.postorder_traversal(node.right)
+            print(node.value)
 
 
 tree = Tree()
